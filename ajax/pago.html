@@ -1,0 +1,133 @@
+<div class="row">
+	<div id="breadcrumb" class="col-md-12">
+		<ol class="breadcrumb">
+			<li><a href="index.html">Dashboard</a></li>
+			<li><a href="#">Cuentas</a></li>
+			<li><a href="#">Pagos    </a></li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="row">
+			<div class="col-xs-6 col-sm-6">
+				<div class="box">
+					<div class="box-header">
+						<div class="box-name">
+							<i class="fa fa-bar-chart-o"></i>
+							<span>Facturas Pendientes</span>
+						</div>
+						<div class="box-icons">
+							<a class="collapse-link">
+								<i class="fa fa-chevron-up"></i>
+							</a>
+							<a class="expand-link">
+								<i class="fa fa-expand"></i>
+							</a>
+							<a class="close-link">
+								<i class="fa fa-times"></i>
+							</a>
+						</div>
+						<div class="no-move"></div>
+					</div>
+					<div class="box-content">
+						<h4 class="page-header">Filtrar por</h4>
+						<form class="form-horizontal" role="form" id="formPagos">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Cliente</label>
+								<div class="col-sm-4">
+									 <select class="form-control" id="selectCliente" name="cliente">
+									 </select>
+								</div>
+							</div>
+							<h4 class="page-header"></h4>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12">
+					<div class="box">
+						<div class="box-header">
+							<div class="box-name">
+								<i class="fa fa-linux"></i>
+								<span>Pagos Pendientes</span>
+							</div>
+							<div class="box-icons">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+								<a class="expand-link">
+									<i class="fa fa-expand"></i>
+								</a>
+								<a class="close-link">
+									<i class="fa fa-times"></i>
+								</a>
+							</div>
+							<div class="no-move"></div>
+						</div>
+						<div class="box-content no-padding">
+							<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Cliente</th>
+										<th>Fecha</th>
+										<th>Monto</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody id="facturasPendientes" >
+								</tbody>
+								<tfoot>
+									<tr>
+										<th>ID</th>
+										<th>Cliente</th>
+										<th>Fecha</th>
+										<th>Monto</th>
+										<th></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	<div id="modalPago"></div>
+</div>
+<script type="text/javascript">
+// Run Select2 on element
+function Select2Test(){
+	$("#el2").select2();
+}
+$(document).ready(function() {
+	// Load script of Select2 and run this
+	LoadSelect2Script(Select2Test);
+	WinMove();
+});
+</script>
+<script type="text/javascript">
+// Run Datables plugin and create 3 variants of settings
+function AllTables(){
+	TestTable1();
+	TestTable2();
+	TestTable3();
+	LoadSelect2Script(MakeSelect2);
+}
+function MakeSelect2(){
+	$('select1').select2();
+	$('.dataTables_filter').each(function(){
+		$(this).find('label input[type=text]').attr('placeholder', 'Search');
+	});
+}
+$(document).ready(function() {
+	// Load Datatables and run plugin on tables 
+	LoadDataTablesScripts(AllTables);
+	// Add Drag-n-Drop feature
+	WinMove();
+});
+</script>
+<script type="text/javascript" src="js/ameCliente.js"></script>
+<script type="text/javascript" src="js/ameCuentaCliente.js"></script>

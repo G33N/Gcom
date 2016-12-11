@@ -1,0 +1,209 @@
+<div class="row">
+	<div id="breadcrumb" class="col-md-12">
+		<ol class="breadcrumb">
+			<li><a href="index.html">Dashboard</a></li>
+			<li><a href="#">Productos</a></li>
+			<li><a href="#">Categorias</a></li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box ui-draggable ui-droppable">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-linux"></i>
+					<span>Saldos</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content">
+				<div class="row text-center">
+					<div class="col-xs-12 col-sm-6">
+						<h4>SALDO DISPONIBLE</h4>
+						<h2 id="saldoDisponible" class="saldoDisponible">$ </h2>
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<h4>SALDO EN CUENTA</h4>
+						<h2 id="saldoCuenta" class="saldoCuenta">$ </h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<div class="box">
+				<div class="box-header">
+					<div class="box-name">
+						<i class="fa fa-bar-chart-o"></i>
+						<span>Nueva Operacion</span>
+					</div>
+					<div class="box-icons">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+						<a class="expand-link">
+							<i class="fa fa-expand"></i>
+						</a>
+						<a class="close-link">
+							<i class="fa fa-times"></i>
+						</a>
+					</div>
+					<div class="no-move"></div>
+				</div>
+				<div class="box-content">
+					<h4 class="page-header">Datos de Operacion</h4>
+					<form class="form-horizontal" role="form" id="nuevaOperacionForm">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Caja </label>
+							<div class="col-sm-4">
+								<select id="selectCaja" name="idCaja"></select>
+							</div>
+						</div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Detalle </label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" name="detalle" data-placement="bottom" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tipo </label>
+              <div class="col-sm-4">
+                <select id="tipo" name="tipo">
+                  <option value="1">Entrada</option>
+                  <option value="2">Salida</option>
+                  <option value="3">Por Cobrar</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Fecha </label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control " id="fecha" name="fecha" data-placement="bottom" >
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Monto </label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" name="monto" data-placement="bottom" >
+                <input type="hidden" name="idFactura" value="">
+                <input type="hidden" name="usuario" value="default">
+              </div>
+            </div>
+						<h4 class="page-header"></h4>
+						<div class="row form-group">
+							<div class="col-sm-6 pull-right">
+								<button type="submit" class="btn btn-success">Guardar</button>
+								<button type="reset" class="btn btn-danger">Cancelar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<div class="box">
+						<div class="box-header">
+							<div class="box-name">
+								<i class="fa fa-linux"></i>
+								<span>Cajas</span>
+							</div>
+							<div class="box-icons">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+								<a class="expand-link">
+									<i class="fa fa-expand"></i>
+								</a>
+								<a class="close-link">
+									<i class="fa fa-times"></i>
+								</a>
+							</div>
+							<div class="no-move"></div>
+						</div>
+						<div class="box-content no-padding">
+							<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-3">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Detalle</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+										<th>Modificar</th>
+										<th>Eliminar</th>
+									</tr>
+								</thead>
+								<tbody id="tablaOperaciones" >
+								</tbody>
+								<tfoot>
+									<tr>
+										<th>ID</th>
+										<th>Detalle</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+										<th>Modificar</th>
+										<th>Eliminar</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+		</div>
+		<div id="modalOperacion"></div>
+	</div>
+<script type="text/javascript">
+// Run Datables plugin and create 3 variants of settings
+function AllTables(){
+	TestTable1();
+	TestTable2();
+	TestTable3();
+}
+function MakeSelect2(){
+	$('select').select2();
+	$('.dataTables_filter').each(function(){
+		$(this).find('label input[type=text]').attr('placeholder', 'Search');
+	});
+}
+$(document).ready(function() {
+	// Load Datatables and run plugin on tables
+	LoadDataTablesScripts(AllTables);
+	// Add Drag-n-Drop feature
+	WinMove();
+});
+</script>
+<script type="text/javascript">
+// Run timepicker
+function DemoTimePicker(){
+	$('#input_time').timepicker({setDate: new Date()});
+}
+$(document).ready(function() {
+	// Create Wysiwig editor for textare
+	TinyMCEStart('#wysiwig_simple', null);
+	TinyMCEStart('#wysiwig_full', 'extreme');
+	// Add slider for change test input length
+	FormLayoutExampleInputLength($( ".slider-style" ));
+	// Initialize datepicker
+	$('#fecha').datepicker({setDate: new Date()});
+	// Load Timepicker plugin
+	LoadTimePickerScript(DemoTimePicker);
+	// Add tooltip to form-controls
+	$('.form-control').tooltip();
+	// Load example of form validation
+	LoadBootstrapValidatorScript(DemoFormValidator);
+	// Add drag-n-drop feature to boxes
+	WinMove();
+});
+</script>
+<script type="text/javascript" src="js/ameCaja.js"></script>

@@ -1,0 +1,12 @@
+[{
+	"cbte_modo": "CAE",
+	"cuit_emisor": "20377710348",
+	"pto_vta": 1,
+	"cbte_tipo": 11,
+	"cbte_nro": 1,
+	"cbte_fch": "20160621",
+	"imp_total": 1,
+	"cod_autorizacion": "66258595489275",
+	"doc_tipo_receptor": 80,
+	"doc_nro_receptor": "20336216118"
+}]

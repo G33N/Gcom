@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+
+  File "/srv/http/Gcom-ToyotaCipolletti/facturacion/pyafipws/rece1.py", line 527, in <module>
+    tipo_cbte = int(raw_input("Tipo de comprobante: "))
+
+EOFError: EOF when reading a line
