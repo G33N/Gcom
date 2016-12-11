@@ -86,10 +86,19 @@ function enviarFormularioFactura(){
                 }
         });
         $('#formFactura')[0].reset();
+        showLoader(13000);
         setTimeout(function abrirPDF(){
             window.open('facturacion/factura.pdf');
-        }, 10000);
+        }, 13000);
         return false;
+    });
+}
+function showLoader(time){
+    $("#fakeloader").fakeLoader({
+    timeToHide:time, //Time in milliseconds for fakeLoader disappear
+    zIndex:"999",//Default zIndex
+    spinner:"spinner7",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+    bgColor:"#5A83A4", //Hex, RGB or RGBA colors
     });
 }
 function imprimirFactura(facturaId){
@@ -331,7 +340,7 @@ function enviarFormularioAnularFactura(){
             url: "datos/ameFactura.php",
             data: $(this).serialize() +"&orden="+17 +"&facturaId="+facturaId,
             success:function(data){
-                    window.open('/Gcom/facturacion/factura.pdf');
+                    window.open('/Gcom-ToyotaCipolletti/facturacion/factura.pdf');
                 }
         });
 }

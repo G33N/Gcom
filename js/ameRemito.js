@@ -74,10 +74,19 @@ function enviarFormularioRemito(){
                 }
         });
         $('#formFactura')[0].reset();
+        showLoader(10000);
         setTimeout(function abrirPDF(){
             window.open('facturacion/remito.pdf');
         }, 10000);
         return false;
+    });
+}
+function showLoader(time){
+    $("#fakeloader").fakeLoader({
+    timeToHide:time, //Time in milliseconds for fakeLoader disappear
+    zIndex:"999",//Default zIndex
+    spinner:"spinner7",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+    bgColor:"#5A83A4", //Hex, RGB or RGBA colors
     });
 }
 function enviarFormularioRemitoProducto(){
